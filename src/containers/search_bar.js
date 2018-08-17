@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 
 export default class SearchBar extends Component {
-    constructor(props) {
-        this.state = {term: ''};
-    }
+  constructor(props) {
+    super(props);
+    this.state = {term: ''};
+    this.onInputChange = this.onInputChange.bind(this);
+  }
 
     onInputChange(event) {
-        console.log(event.target.value);
+        this.setState({term: event.target.value});
+    }
+    onFormSubmit(event) {
+      event.preventDefault();
+
+      // Fetch weather data here.
+      
     }
     render() {
         return (
-            <form className="input-group">
+            <form onSubmit={this.onFormSubmit} className="input-group">
                 <input
                     placeholder="Get a five-day forecast in your favorite cities"
                     className="form-control"

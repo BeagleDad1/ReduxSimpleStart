@@ -26,13 +26,16 @@ class PostsNew extends Component {
     }
 
     onSubmit(values) {
-        this.props.createPost(values);
+      this.props.createPost(values, () => {
+        this.props.history.push('/');
+      });
     }
 
   render() {
-      const { handleSubmit } = this.props;
+    const { handleSubmit } = this.props;
+
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
         <Field
             name='title'
             label='Title for Post'
